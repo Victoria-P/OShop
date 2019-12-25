@@ -9,6 +9,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
@@ -52,6 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     CustomFormsModule,
     FormsModule,
+    MatSortModule,
     AppRoutingModule,
     NgbModule,
     RouterModule.forRoot([
