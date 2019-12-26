@@ -57,23 +57,6 @@
         </form>
     </div>
     <div class="col-md-6">
-        <div class="card" style="width: 18rem;">
-            <img src="https://c.pxhere.com/photos/f5/8d/abstract_abstract_expressionism_abstract_painting_acrylic_paint_art_artistic_background_canvas-1567045.jpg!d"
-                class="card-img-top" *ngIf="product.imageUrl === undefined">
-            <img [src]="product.imageUrl" class="card-img-top" *ngIf="product.imageUrl">
-            <div class="card-body-dark">
-
-                <h5 class="card-title-dark" *ngIf="product.title === undefined || product.author === undefined">
-                    Title | Author</h5>
-              <h5 class="card-title-dark" *ngIf="product.title || product.author">{{ product.title }} |
-                    {{ product.author }}</h5>
-
-                <p class="card-text-dark" *ngIf="product.price === undefined">Price: $0.00</p>
-                <p class="card-text-dark" *ngIf="product.price">Price: {{ product.price | currency:'USD':true }}</p>
-
-                <p class="card-text-dark" *ngIf="product.category === undefined">Category of the Art Work</p>
-                <p class="card-text-dark" *ngIf="product.category">Category: {{ product.category }}</p>
-            </div>
-        </div>
+        <product-card [product]="product" [show-actions]="false"></product-card>
     </div>
 </div>
