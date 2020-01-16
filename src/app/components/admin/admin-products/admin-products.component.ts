@@ -24,7 +24,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getAll().snapshotChanges().pipe(
+    this.productService.getAllProducts().snapshotChanges().pipe(
       map((actions: any) =>
         actions.map(a => ({ key: a.key, ...a.payload.val() }))
       )

@@ -1,1 +1,53 @@
-<p>shopping-cart works!</p>
+
+<ng-container *ngIf="cart$ | async as cart">
+    
+    <div *ngIf="getItemsCount() == 1; else severalItems">
+        <p>You have {{ getItemsCount() }} item in your shopping cart.</p>
+    </div>
+     <ng-template #severalItems>
+        <p>You have {{ getItemsCount() }} items in your shopping cart.</p>
+     </ng-template>
+    <table class="table table-dark table-hover" 
+    *ngIf="getItemsCount() !== 0">
+        <thead>
+            <tr class="bg-info">
+                <th></th>
+                <th>Product</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of cartData.items" class="">
+            <tr *ngIf="item.quantity !== 0">
+                <td>
+                    <img [src]="item.product.imageUrl" class="thumbnail" alt="">
+                </td>
+                <td>{{ item.product.title }}</td>
+                <td>{{ item.product.author }}</td>
+                <td>{{ item.product.category }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.totalPrice }}</td>
+
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>${{ orderCost }}</b></td>
+            </tr>
+        </tfoot>
+    </table>
+    <button *ngIf="getItemsCount() == 0"
+        [routerLink]="['/']"
+        class="btn btn-info btn-sm">Add Products</button>
+</ng-container>
+
