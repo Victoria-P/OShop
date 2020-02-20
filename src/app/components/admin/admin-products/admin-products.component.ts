@@ -43,6 +43,7 @@ export class AdminProductsComponent implements OnInit {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
+        case 'imageUrl': return this.compare(a.imageUrl, b.imageUrl, isAsc);
         case 'title': return this.compare(a.title, b.title, isAsc);
         case 'author': return this.compare(a.author, b.author, isAsc);
         case 'category': return this.compare(a.category, b.category, isAsc);

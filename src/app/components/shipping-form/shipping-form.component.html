@@ -1,0 +1,58 @@
+<form #f="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" id="firstName" 
+         #firstName="ngModel" [(ngModel)]="shipping.firstName" NgModel name="firstName" required>
+        <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+          <div *ngIf="firstName.errors.required">First name is required.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" id="lastName" 
+        #lastName="ngModel" [(ngModel)]="shipping.lastName" NgModel name="lastName" required>
+        <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
+          <div *ngIf="lastName.errors.required">Last name is required.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" placeholder="1234 Main St" 
+      #address="ngModel" [(ngModel)]="shipping.address" NgModel name="address" required>
+      <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+        <div *ngIf="address.errors.required">Address is required.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" 
+        #city="ngModel" [(ngModel)]="shipping.city" NgModel name="city" required>
+        <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+          <div *ngIf="city.errors.required">City is required.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="zip">Zip</label>
+        <input type="text" class="form-control" id="zip" 
+        #zip="ngModel" [(ngModel)]="shipping.zip" NgModel name="zip" required>
+        <div class="alert alert-danger" *ngIf="zip.touched && zip.invalid">
+          <div *ngIf="zip.errors.required">Zip is required.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div>
+    <button 
+    [disabled]="!f.valid"
+    class="btn btn-primary"
+    (click)="placeOrder()">Place order</button>
+  </form>  

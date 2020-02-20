@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,10 +8,10 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-cart$;
-cartItemsCount;
-cartData;
-orderCost;
+  cart$;
+  cartItemsCount;
+  cartData;
+  orderCost;
 
 
   constructor(private shoppingCartService: ShoppingCartService) { }
@@ -22,15 +22,15 @@ orderCost;
     this.getOrderCost();
   }
 
-  getItemsCount(){
+  getItemsCount() {
     return this.cartItemsCount = this.shoppingCartService.shoppingCartItemCount;
   }
-  getItemsFromCart(){
+  getItemsFromCart() {
     this.shoppingCartService.getItemsFromCart();
     this.cartData = this.shoppingCartService.cartData;
-    }
+  }
 
-  getOrderCost(){
+  getOrderCost() {
     setInterval(() => {
       this.orderCost = 0;
       this.cartData.items.forEach((item) => {
@@ -38,7 +38,7 @@ orderCost;
       }, 1000)
     })
   }
-  }
+}
 
-  
+
 

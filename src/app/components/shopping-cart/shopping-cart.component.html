@@ -30,7 +30,7 @@
                 <td>{{ item.product.category }}</td>
                 <td>${{ item.product.price }}</td>
                 <td>{{ item.quantity }}</td>
-                <td>${{ item.totalPrice }}</td>
+                <td>${{ item.totalPrice.toFixed(2) }}</td>
 
             </tr>
         </tbody>
@@ -42,10 +42,16 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><b>${{ orderCost }}</b></td>
+                <td><b>${{ orderCost.toFixed(2) }}</b></td>
             </tr>
         </tfoot>
     </table>
+    <a 
+    *ngIf="getItemsCount() !== 0"
+    routerLink="/check-out"
+    class="btn btn-success">
+Check out
+</a>
     <button *ngIf="getItemsCount() == 0"
         [routerLink]="['/']"
         class="btn btn-info btn-sm">Add Products</button>

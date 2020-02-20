@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Order Summary</h5>
+      <div *ngIf="getItemsCount() == 1; else severalItems">
+        <p class="card-text">You have {{ getItemsCount() }} item in your shopping cart.</p>
+    </div>
+     <ng-template #severalItems>
+        <p class="card-text">You have {{ getItemsCount() }} items in your shopping cart.</p>
+     </ng-template>
+      <ul *ngFor="let item of cartData.items" class="list-group">
+          <li *ngIf="item.quantity !== 0" class="list-group-item" >
+            <img [src]="item.product.imageUrl" class="thumbnail" alt="" height="50px" width="50px">  
+            {{ item.quantity }} x "{{ item.product.title  }}" | {{ item.product.author }}
+            <div class="float-right">
+              {{ item.totalPrice.toFixed(2) }}$
+            </div>
+          </li>
+      </ul>
+      <li class="list-group-item">
+        <b>Total</b> 
+         <div class="float-right">
+          <b>{{ orderCost.toFixed(2) }}$</b> 
+         </div>
+       </li>
+    </div>
+  </div>

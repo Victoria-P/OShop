@@ -5,7 +5,7 @@
     <img [src]="product.imageUrl" class="card-img-top" *ngIf="product.imageUrl">
 
     <div class="card-body-dark">
-        <h5 class="card-title-dark" *ngIf="product.title === undefined || product.author === undefined">
+        <h5 class="card-title-dark" *ngIf="product.title === undefined && product.author === undefined">
             Title | Author</h5>
         <h5 class="card-title" *ngIf="product.title || product.author">{{ product.title }} | {{ product.author }}</h5>
 

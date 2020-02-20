@@ -36,12 +36,18 @@ public cartData = { items: []};
   }
 
   async addToCart(product){
-    this.updateItemQuantity(product, 1);
+      this.updateItemQuantity(product, 1);
   }
 
   async removeFromCart(product){
     this.updateItemQuantity(product, -1);
   }
+
+  async clearCart() { 
+    let cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
 
   private async updateItemQuantity(product, change: number){
     let cartId = await this.getOrCreateCartId();
